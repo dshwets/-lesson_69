@@ -26,7 +26,8 @@ async function makeRequest(url, method='GET',data={}) {
         return await response.json();
 
     } else {            // ошибка
-        let error = new Error(response.statusText);
+        console.log(response)
+        let error = new Error();
         error.response = response;
         throw error;
     }
@@ -35,18 +36,14 @@ async function makeRequest(url, method='GET',data={}) {
 // answer = makeRequest('http://localhost:8000/api/v1/multiply/',method = "POST", data = {"A":5,"B":4})
 let buttons = document.querySelectorAll('button')
 for (let button of buttons) {
-    button.addEventListener('click', function(event){
-    // console.log(event.target.id)
-    answer = makeRequest('http://localhost:8000/api/v1/'+event.target.id+'/',method = "POST",
+    button.addEventListener('click', async function(event){
+        try {
+            let answer = await makeRequest('http://localhost:8000/api/v1/'+event.target.id+'/',method = "POST",
         data = {"A":document.getElementById('A').value,"B":document.getElementById('B').value})
-        // answer1 = await answer
-        // console.log(answer)
-        async function make_answer(answer) {
-        answer1 = await answer
-        console.log(await answer1)
-        document.getElementById('text').value = answer1.answer}
-        make_answer(answer)
-
-
+            document.getElementById('text').value = answer.answer
+        } catch (e) {
+            let er = await e.response.json()
+            document.getElementById('text').value = er.error
+        }
     })
 }

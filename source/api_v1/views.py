@@ -52,4 +52,6 @@ class AddView(View):
                 'answer': answer
             })
         except Exception as e:
-            return HttpResponseBadRequest(str(e))
+            response = JsonResponse({'error': str(e)})
+            response.status_code = 400
+            return response
