@@ -52,6 +52,4 @@ class AddView(View):
                 'answer': answer
             })
         except Exception as e:
-            return JsonResponse({
-                'answer': str(e)
-            })
+            return HttpResponseBadRequest(str(e))
