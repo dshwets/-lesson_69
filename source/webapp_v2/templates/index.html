@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task№2</title>
+</head>
+<body>
+    <input type="number" id='A' placeholder="A">
+    <input type="number" id='B' placeholder="B">
+    <p>
+        <button id="add">Сложение</button>
+        <button id="subtract">Вычетание</button>
+        <button id="multiply">Умножение</button>
+        <button id="divide">Деление</button>
+    </p>
+    <textarea rows="10" cols="45" id="text"></textarea>
+    <script src="{% static 'js/mainV2.js' %}"></script>
+</body>
+</html>

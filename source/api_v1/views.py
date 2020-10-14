@@ -33,7 +33,7 @@ class ArticleCreateView(View):
 
 
 class AddView(View):
-    def post(self,request,*args,**kwargs):
+    def post(self, request, *args,**kwargs):
         data = json.loads(request.body)
         try:
             data['A'] = float(data['A'])
@@ -49,7 +49,9 @@ class AddView(View):
             else:
                 answer = None
             return JsonResponse({
-                "answer": answer
+                'answer': answer
             })
         except Exception as e:
-            return HttpResponseBadRequest(str(e))
+            return JsonResponse({
+                'answer': str(e)
+            })
