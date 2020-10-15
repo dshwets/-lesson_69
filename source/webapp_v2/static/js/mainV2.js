@@ -41,9 +41,11 @@ for (let button of buttons) {
             let answer = await makeRequest('http://localhost:8000/api/v1/'+event.target.id+'/',method = "POST",
         data = {"A":document.getElementById('A').value,"B":document.getElementById('B').value})
             document.getElementById('text').value = answer.answer
+            document.getElementById('text').style.color ='green'
         } catch (e) {
             let er = await e.response.json()
             document.getElementById('text').value = er.error
+            document.getElementById('text').style.color ='red'
         }
     })
 }
