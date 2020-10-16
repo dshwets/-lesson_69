@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'rest_framework',
     'accounts',
     'webapp',
     'api_v1',
-    'webapp_v2'
+    'webapp_v2',
+
 ]
 
 MIDDLEWARE = [
